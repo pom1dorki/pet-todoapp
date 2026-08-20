@@ -17,13 +17,12 @@ func (r *TasksRepository) PatchTask(ctx context.Context, id int, task domain.Tas
 	query := `
 	UPDATE todoapp.tasks
 	SET
-		title=$1
-		description=$2
-		completed=$3
-		completed_at=$4
-		version=version+1
-	WHERE id=$5 AND version=$6
-
+		title = $1,
+		description = $2,
+		completed = $3,
+		completed_at = $4,
+		version = version + 1
+	WHERE id = $5 AND version = $6
 	RETURNING
 		id,
 		version,
